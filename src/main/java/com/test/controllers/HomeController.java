@@ -1,5 +1,6 @@
 package com.test.controllers;
 
+import org.omg.CORBA.Request;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,13 +16,12 @@ public class HomeController {
 
 
     @RequestMapping(path = INDEX_PAGE_PATH, method = RequestMethod.GET)
-    public String index(Map<String, Object> model){
-
+    public String index(){
         return INDEX_PAGE_DIR;
     }
 
     @RequestMapping(path = INDEX_PAGE_PATH, method = RequestMethod.POST)
-    public @ResponseBody String index(){
+    public @ResponseBody String index(Request request){
 
         return INDEX_PAGE_DIR;
     }
