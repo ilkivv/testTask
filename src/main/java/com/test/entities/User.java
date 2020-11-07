@@ -1,18 +1,23 @@
 package com.test.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
-public class User {
+@Table(name = "users")
+public class User{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "full_name", length = 255)
     private String full_name;
 
-    @OneToMany(mappedBy = "holder_car", fetch = FetchType.EAGER)
-    private Collection<Car> cars;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "holder_car", fetch = FetchType.EAGER)
+    private List<Car> cars = new ArrayList<>();
 
     public User(){}
 
@@ -36,7 +41,21 @@ public class User {
         return cars;
     }
 
-    public void setCars(Collection<Car> cars) {
+    public void setCars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public void addCar(Car car){
+        if (car != null){
+            this.cars.add(car);
+            car.setHolder_car(this);
+        }
+    }
+
+    public void removeCar(Car car){
+        if (car != null){
+            this.cars.remove(car);
+            car.setHolder_car(null);
+        }
     }
 }

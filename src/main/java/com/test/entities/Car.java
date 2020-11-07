@@ -1,11 +1,8 @@
 package com.test.entities;
 
-import com.sun.org.glassfish.gmbal.NameValue;
-import com.test.intarfaces.CarRepository;
-import org.aspectj.lang.annotation.RequiredTypes;
-import org.springframework.beans.factory.annotation.Required;
-
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 @Table(name = "cars")
@@ -27,6 +24,20 @@ public class Car {
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User holder_car;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "car_penalties",
+            joinColumns = @JoinColumn(
+                    name = "car_id",
+                    referencedColumnName = "id"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "penalty_id",
+                    referencedColumnName = "id"
+            )
+    )
+    private Collection<Penalty> penalties = new ArrayList<>();
 
     public Car() {
     }
@@ -79,4 +90,34 @@ public class Car {
     public void setHolder_car(User holder_car) {
         this.holder_car = holder_car;
     }
+
+    public Collection<Penalty> getPenalties() {
+        return penalties;
+    }
+
+    public void setPenalties(Collection<Penalty> penalties) {
+        this.penalties = penalties;
+    }
+
+    public void addPenalty(Penalty penalty){
+        if (penalty != null){
+            this.penalties.add(penalty);
+        }
+    }
+
+    public void removePenalty(Penalty penalty) {
+        if (penalty != null){
+            this.penalties.remove(penalty);
+        }
+    }
+
+    public void removePenaltyAll(){
+        for (Penalty penalty : penalties){
+            removePenalty(penalty);
+        }
+    }
+
+//    public void isEmpty(){
+//        return assert
+//    }
 }
