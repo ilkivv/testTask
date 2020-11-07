@@ -1,9 +1,7 @@
 package com.test.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class User {
@@ -12,6 +10,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String full_name;
+
+    @OneToMany(mappedBy = "holder_car", fetch = FetchType.EAGER)
+    private Collection<Car> cars;
 
     public User(){}
 
@@ -29,5 +30,13 @@ public class User {
 
     public void setFull_name(String full_name) {
         this.full_name = full_name;
+    }
+
+    public Collection<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(Collection<Car> cars) {
+        this.cars = cars;
     }
 }
