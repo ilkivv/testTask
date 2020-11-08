@@ -40,25 +40,38 @@ public class DataLoader implements ApplicationRunner {
         Penalty penalty5 = new Penalty("Проезд на красный", (float) 5000);
 
         Car car1 = new Car();
-        car1.setBrand_car("Toyota");
-        car1.setModel_car("Spacio");
-        car1.setState_number("с317нн70");
+        car1.setBrandCar("Toyota");
+        car1.setModelCar("Spacio");
+        car1.setStateNumber("С317НН70");
         car1.addPenalty(penalty1);
         car1.addPenalty(penalty2);
 
         Car car2 = new Car();
-        car2.setBrand_car("Toyota");
-        car2.setModel_car("Corolla");
-        car2.setState_number("с214мм70");
+        car2.setBrandCar("Toyota");
+        car2.setModelCar("Corolla");
+        car2.setStateNumber("С214ММ70");
         car2.addPenalty(penalty3);
         car2.addPenalty(penalty4);
         car2.addPenalty(penalty5);
 
         User user1 = new User();
-        user1.setFull_name("Илькив Алексей Витальевич");
+        user1.setFullName("Илькив Алексей Витальевич");
         user1.addCar(car1);
         user1.addCar(car2);
+
+
+        Car car3 = new Car();
+        car3.setBrandCar("Kia");
+        car3.setModelCar("Rio");
+        car3.setStateNumber("Н500ММ70");
+
+        User user2 = new User();
+        user2.setFullName("Иванов Иван Иванович");
+        user2.addCar(car3);
+
+
         userRepository.save(user1);
+        userRepository.save(user2);
 
     }
 }

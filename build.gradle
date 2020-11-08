@@ -28,6 +28,8 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        compile group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: '2.3.5.RELEASE', ext: 'pom'
+
     }
 }
 

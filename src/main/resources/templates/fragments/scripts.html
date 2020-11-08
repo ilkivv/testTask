@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
 <body>
+    <th:block th:fragment="scripts">
+        <script
+                src="https://code.jquery.com/jquery-3.5.1.js"
+                integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+                crossorigin="anonymous"></script>
+        <!--begin::Global Theme Bundle(used by all pages)-->
+        <script src="plugins/global/plugins.bundle.js?v=7.0.6"></script>
+        <script src="plugins/custom/prismjs/prismjs.bundle.js?v=7.0.6"></script>
+        <script src="js/scripts.bundle.js?v=7.0.6"></script>
+        <!--end::Global Theme Bundle-->
 
+        <!--begin::Page Vendors(used by this page)-->
+        <script src="plugins/custom/fullcalendar/fullcalendar.bundle.js?v=7.0.6"></script>
+        <!--end::Page Vendors-->
+
+        <!--begin::Page Scripts(used by this page)-->
+        <script src="js/pages/widgets.js?v=7.0.6"></script>
+        <!--end::Page Scripts-->
+    </th:block>
 </body>
 </html>

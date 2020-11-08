@@ -1,9 +1,64 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}"
 >
 <body>
 <div layout:fragment="content">
-    Все ок
+    <div class="card card-custom">
+        <div class="card-header">
+            <h3 class="card-title">
+                Поиск штрафов
+            </h3>
+        </div>
+        <!--begin::Form-->
+        <form class="j-default-form" method="post" action="/search-info">
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Введите владельца</label>
+                    <input type="text" class="form-control j-input_full_name" th:name="fullName" placeholder="Иванов Иван Иванович"/>
+                </div>
+                <div class="form-group">
+                    <label>Введите госномер</label>
+                    <input type="text" class="form-control j-input_state_number" th:name="stateNumber" placeholder="М666ММ70"/>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary mr-2 j-search-submit">Поиск</button>
+                </div>
+            </div>
+        </form>
+        <div class="j-result-info">
+
+        </div>
+        <!--end::Form-->
+    </div>
 </div>
+<th:block layout:fragment="custom_scripts">
+    <script type="application/javascript">
+
+
+        $(document).ready(function (){
+
+           $('.j-default-form').submit(function (e){
+               e.preventDefault();
+
+               var data = {
+                   stateNumber: $('.j-input_full_name').val(),
+                   fullName: $('.j-input_state_number').val()
+               };
+
+               $.ajax({
+                   url: "/search-info",
+                   method: 'post',
+                   contentType:'application/json; charset=utf-8;',
+                   dataType: 'json',
+                   data: JSON.stringify(data),
+                   success: function (data){
+
+                   }
+               });
+           });
+        });
+    </script>
+</th:block>
 </body>
 </html>

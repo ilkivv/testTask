@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <th:block th:fragment="styles">
+        <!--begin::Fonts-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"/>        <!--end::Fonts-->
 
-</body>
+        <!--begin::Page Vendors Styles(used by this page)-->
+        <link href="plugins/custom/fullcalendar/fullcalendar.bundle.css?v=7.0.6" rel="stylesheet" type="text/css"/>
+        <!--end::Page Vendors Styles-->
+
+
+        <!--begin::Global Theme Styles(used by all pages)-->
+        <link href="plugins/global/plugins.bundle.css?v=7.0.6" rel="stylesheet" type="text/css"/>
+        <link href="plugins/custom/prismjs/prismjs.bundle.css?v=7.0.6" rel="stylesheet" type="text/css"/>
+        <link href="css/style.bundle.css?v=7.0.6" rel="stylesheet" type="text/css"/>
+        <!--end::Global Theme Styles-->
+
+        <!--begin::Layout Themes(used by all pages)-->
+        <!--end::Layout Themes-->
+
+        <link rel="shortcut icon" href="media/logos/favicon.ico"/>
+
+    </th:block>
+</head>
 </html>

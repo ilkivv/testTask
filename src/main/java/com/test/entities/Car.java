@@ -1,5 +1,7 @@
 package com.test.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,17 +15,18 @@ public class Car {
     private Long id;
 
     @Column(name = "state_number", length = 255)
-    private String state_number;
+    private String stateNumber;
 
     @Column(name = "brand_car", length = 255)
-    private String brand_car;
+    private String brandCar;
 
     @Column(name = "model_car", length = 255)
-    private String model_car;
+    private String modelCar;
 
+    @JsonIgnoreProperties("cars")
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
-    private User holder_car;
+    private User holderCar;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
@@ -42,53 +45,14 @@ public class Car {
     public Car() {
     }
 
-    public Car(String state_number, String brand_car, String model_car) {
-        this.state_number = state_number;
-        this.brand_car = brand_car;
-        this.model_car = model_car;
-    }
-
-    public Car(String state_number, String brand_car, String model_car, User holder_car) {
-        this.state_number = state_number;
-        this.brand_car = brand_car;
-        this.model_car = model_car;
-        this.holder_car = holder_car;
+    public Car(String stateNumber, String brand_car, String model_car) {
+        this.stateNumber = stateNumber;
+        this.brandCar = brandCar;
+        this.modelCar = modelCar;
     }
 
     public Long getId() {
         return id;
-    }
-
-    public String getState_number() {
-        return state_number;
-    }
-
-    public void setState_number(String state_number) {
-        this.state_number = state_number;
-    }
-
-    public String getBrand_car() {
-        return brand_car;
-    }
-
-    public void setBrand_car(String brand_car) {
-        this.brand_car = brand_car;
-    }
-
-    public String getModel_car() {
-        return model_car;
-    }
-
-    public void setModel_car(String model_car) {
-        this.model_car = model_car;
-    }
-
-    public User getHolder_car() {
-        return holder_car;
-    }
-
-    public void setHolder_car(User holder_car) {
-        this.holder_car = holder_car;
     }
 
     public Collection<Penalty> getPenalties() {
@@ -117,7 +81,35 @@ public class Car {
         }
     }
 
-//    public void isEmpty(){
-//        return assert
-//    }
+    public String getStateNumber() {
+        return stateNumber;
+    }
+
+    public void setStateNumber(String stateNumber) {
+        this.stateNumber = stateNumber;
+    }
+
+    public String getBrandCar() {
+        return brandCar;
+    }
+
+    public void setBrandCar(String brandCar) {
+        this.brandCar = brandCar;
+    }
+
+    public String getModelCar() {
+        return modelCar;
+    }
+
+    public void setModelCar(String modelCar) {
+        this.modelCar = modelCar;
+    }
+
+    public User getHolderCar() {
+        return holderCar;
+    }
+
+    public void setHolderCar(User holderCar) {
+        this.holderCar = holderCar;
+    }
 }
