@@ -26,7 +26,7 @@ public class CarService {
         List<Car> cars = new ArrayList<>();
 
         if (!fullName.isEmpty() && !stateNumber.isEmpty() ) {
-            cars = carRepository.findDistinctByStateNumberOrHolderCar_FullNameContaining(stateNumber, fullName);
+            cars = carRepository.findDistinctByStateNumberAndHolderCar_FullNameContaining(stateNumber, fullName);
         }else if (!fullName.isEmpty() && stateNumber.isEmpty()){
             cars = carRepository.findDistinctByHolderCar_FullNameContaining(fullName);
         }else if (fullName.isEmpty() && !stateNumber.isEmpty()){

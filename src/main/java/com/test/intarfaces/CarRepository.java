@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface CarRepository extends JpaRepository<Car, Long> {
 
-    List <Car> findDistinctByStateNumberOrHolderCar_FullNameContaining(String stateNumber, String fullName);
+    List <Car> findDistinctByStateNumberAndHolderCar_FullNameContaining(String stateNumber, String fullName);
 
     List <Car> findDistinctByStateNumber(String stateNumber);
 

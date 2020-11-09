@@ -42,7 +42,7 @@ public class HomeController {
 
     @RequestMapping(path = POST_SEARCH_DATA_INFO_PATH, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<List<?>> search(@RequestBody Map<String, String> requestBody){
-        List penaltiesByCarOrUser = carService.getPenalties(requestBody.get("fullName"), requestBody.get("stateNumber"));
+        List penaltiesByCarOrUser = carService.getPenalties(requestBody.get("stateNumber"), requestBody.get("fullName"));
         return new ResponseEntity<>(penaltiesByCarOrUser, HttpStatus.OK);
     }
 
