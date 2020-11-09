@@ -40,7 +40,7 @@ public class CarService {
     }
 
     private void generateReport(List<Car> cars) {
-        Map<Long, Integer> rating = new TreeMap<>();
+        Map<Long, Integer> rating = new HashMap<>();
         for (Car car: cars) {
             for (Penalty penalty : car.getPenalties()){
                 rating.put(
@@ -58,7 +58,15 @@ public class CarService {
                         .toMap(Map.Entry::getKey,
                                 Map.Entry::getValue,
                                 (e1, e2) -> e2,
-                                LinkedHashMap::new));
+                                LinkedHashMap::new
+                        )
+                );
+
+//        List<Car> cars1 = new ArrayList<>();
+//        for (Map item : sortedRating) {
+//
+//        }
+
         String qwewqrq = "dfasd";
     }
 
