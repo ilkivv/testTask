@@ -2,16 +2,16 @@ package com.test.controllers;
 
 import com.test.classes.ExcelDocument;
 import com.test.entities.Penalty;
-import com.test.intarfaces.CarRepository;
 import com.test.intarfaces.PenaltyRepository;
-import com.test.intarfaces.UserRepository;
 import com.test.service.CarService;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -42,8 +42,8 @@ public class HomeController {
 
     @RequestMapping(path = POST_SEARCH_DATA_INFO_PATH, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<List<?>> search(@RequestBody Map<String, String> requestBody){
-        List penaltiesByCar = carService.getPenalties(requestBody.get("fullName"), requestBody.get("stateNumber"));
-        return new ResponseEntity<>(penaltiesByCar, HttpStatus.OK);
+        List penaltiesByCarOrUser = carService.getPenalties(requestBody.get("fullName"), requestBody.get("stateNumber"));
+        return new ResponseEntity<>(penaltiesByCarOrUser, HttpStatus.OK);
     }
 
     @RequestMapping(path = POST_GENERATE_REPORT_PATH, method = RequestMethod.GET)

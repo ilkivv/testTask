@@ -23,13 +23,11 @@
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary mr-2 j-search-submit">Поиск</button>
+                    <a href="/generate-report"></a><button type="submit" class="btn btn-primary mr-2 j-search-submit">Сгенерировать отчет</button>
                 </div>
             </div>
         </form>
-        <a href="/generate-report">Сгенерировать отчет</a>
-        <div class="j-result-info">
-
-        </div>
+        <div class="j-result-info"></div>
         <!--end::Form-->
     </div>
 </div>
@@ -42,9 +40,14 @@
            $('.j-default-form').submit(function (e){
                e.preventDefault();
 
+               var result_info = $('.j-result-info');
+
+               var fullName = $('.j-input_full_name').val(),
+                   stateNumber = $('.j-input_state_number').val();
+
                var data = {
-                   stateNumber: $('.j-input_full_name').val(),
-                   fullName: $('.j-input_state_number').val()
+                   stateNumber: stateNumber,
+                   fullName: fullName
                };
 
                $.ajax({
@@ -53,8 +56,11 @@
                    contentType:'application/json; charset=utf-8;',
                    dataType: 'json',
                    data: JSON.stringify(data),
-                   success: function (data){
-
+                   success: function (cars){
+                       result_info.empty();
+                        $.each(cars, function (k, v){
+                            result_info.append('<p>' + v + '</p></br>')
+                        });
                    }
                });
            });

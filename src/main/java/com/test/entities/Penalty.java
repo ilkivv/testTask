@@ -44,4 +44,8 @@ public class Penalty {
     public void setTypePenalty(String typePenalty) {
         this.typePenalty = typePenalty;
     }
+
+    public String toString(){
+        return "Штраф: " + typePenalty + " Пошлина " + tarrif;
+    }
 }

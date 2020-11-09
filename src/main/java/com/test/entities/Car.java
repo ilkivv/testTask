@@ -1,6 +1,7 @@
 package com.test.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.intellij.lang.annotations.Pattern;
 
 import javax.persistence.*;
 import java.util.ArrayList;
