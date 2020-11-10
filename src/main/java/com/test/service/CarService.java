@@ -3,13 +3,11 @@ package com.test.service;
 import com.test.entities.Car;
 import com.test.entities.Penalty;
 import com.test.intarfaces.CarRepository;
-import org.omg.CORBA.INTERNAL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service("carService")
 public class CarService {
