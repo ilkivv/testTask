@@ -43,3 +43,8 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+bootWar {
+    baseName = 'test'
+    archiveName 'test.war'
+}
