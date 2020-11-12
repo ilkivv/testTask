@@ -22,6 +22,7 @@
   b. скачать его можно перейдя по ссылке [git](https://git-scm.com/download/win)  
   c. произвести установку  
   d. клонировать проект командой git clone https://github.com/ilkivv/testTask.git в нужную папку  
+  e. настроить параметры поключения к бд в файле src/main/resources/application.properties
 ### 5. Сборка проекта  
   в терминале перейти в папку с проектом и выполнить команду `gradle clean build -x test`  
 ### 6. Развернуть приложение на сервере  
